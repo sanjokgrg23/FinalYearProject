@@ -1,4 +1,4 @@
-i<?php
+<?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Answers extends CI_Controller{
