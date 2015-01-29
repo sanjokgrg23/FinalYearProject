@@ -3,6 +3,7 @@ class Files extends CI_Controller
 {
 
  public function user_logged_in(){
+      //method to check user login session still exists. a false return if not.
       if($this->session->userdata('is_logged_in')){
             return true;    
            }else{
@@ -15,8 +16,8 @@ class Files extends CI_Controller
  	if($this->user_logged_in()==false){
        header('location:'.base_url().'main/index');
     }else{
-    	 $this->load->model('model_files');
-    	 $results_array = $this->model_files->fetchAllModules();
+    	 $this->load->model('model_files');//Loading the model
+    	 $results_array = $this->model_files->fetchAllModules();//accessing the fetchAllModules method of the model class
     	 $pass_modules = array(
              'module_names' => $results_array
     	 	);
@@ -131,11 +132,11 @@ class Files extends CI_Controller
          $weekno = $_POST['weekno'];
 
 
-         if(in_array($file_ext, $allowed))
+         if(in_array($file_ext, $allowed))//parameter for whitelisting file extension and allowed size.
           {    
             if($file_error === 0){
               if($file_size <= 15000000){//limiting the file size, currently at 15MB in bytes
-                $file_name_new = uniqid('grg',true).'.'.$file_ext;
+                $file_name_new = uniqid('grg',true).'.'.$file_ext;//prefix after my surname :-)
                 $file_destination = 'uploads/'.$file_name_new;
                   if(move_uploaded_file($file_tmp, $file_destination)){//moving the uploaded files to the new directory from $file_destination
                      $data = array(
