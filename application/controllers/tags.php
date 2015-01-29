@@ -41,7 +41,7 @@ class Tags extends CI_Controller{
             $this->load->view('view_header'); 
             $this->load->view('view_nav',$userdata);
             $this->load->view('log_user/user_second_nav');
-            $this->load->view('tags/viewallTags',$array_result);
+            $this->load->view('tags/viewallTags',$array_result);//passing the values from the array to the view.
             $this->load->view('view_footer');
 	      }else{
 
